@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+           "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+           "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- JDBC Database connection settings -->
+		<property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://klonis.ddns.net:3392/katanemimena?useUnicode=yes;characterEncoding=UTF-8;</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">Db_Admin2019</property>
+		<!-- Disables metadata communication as db faced huge lags while Initializing c3p0 pool-->
+		<property name="Hibernate.temp.use_jdbc_metadata_defaults">false</property>
+
+		<!-- Old FreeDatabase -->
+		<!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property> -->
+		<!-- <property name="connection.url">jdbc:mysql://sql7.freesqldatabase.com:3306/sql7269950</property> -->
+		<!-- <property name="connection.username">sql7269950</property> -->
+		<!-- <property name="connection.password">ffU3f4mVN6</property> -->
+
+		<!-- JDBC connection pool settings ... using built-in test pool -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- Select our SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Echo the SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<!-- Set the current session context -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Set utf8 encoding -->
+		<property name="hibernate.connection.CharSet">utf8</property>
+		<property name="hibernate.connection.characterEncoding">utf8</property>
+		<property name="hibernate.connection.useUnicode">true</property>
+
+	</session-factory>
+
+</hibernate-configuration>

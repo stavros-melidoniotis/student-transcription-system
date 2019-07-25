@@ -1,0 +1,80 @@
+drop table authorities;
+drop table user;
+drop table huaDepartments;
+drop table checked;
+drop table application;
+drop table student;
+drop table department;
+drop table university;
+
+create table user (
+	username varchar(100) NOT NULL,
+ 	password varchar(100) NOT NULL,
+ 	enabled tinyint(1) NOT NULL,
+ 	PRIMARY KEY (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table authorities (
+	 username varchar(100) NOT NULL,
+	 authority varchar(50) NOT NULL,
+	 UNIQUE KEY ix_auth_username (username, authority),
+	 CONSTRAINT fk_authorities_users FOREIGN KEY (username) REFERENCES user (username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table huaDepartments(
+	code int(3),
+	department ENUM('Τμήμα Διαιτολογίας', 'Τμήμα Γεωγραφίας', 'Τμήμα Οικιακής Οικονομίας', 'Τμήμα Πληροφορικής κ Τηλεματικής'),
+	noOfPositions int(3) DEFAULT 0,
+	PRIMARY KEY (code)
+);
+
+create table university(
+	code int(3) AUTO_INCREMENT,
+	name varchar(255),
+  	location varchar(255) NOT NULL,
+  	PRIMARY KEY (code)
+);
+
+create table department(
+	depCode int(4) AUTO_INCREMENT,
+	name varchar(255) NOT NULL,
+	belongingUniversity varchar(255) NOT NULL,
+	matchingDep ENUM('Τμήμα Διαιτολογίας', 'Τμήμα Γεωγραφίας', 'Τμήμα Οικιακής Οικονομίας', 'Τμήμα Πληροφορικής κ Τηλεματικής'),
+	PRIMARY KEY (depCode)
+);
+
+create table student(
+	amka varchar(11),
+  	fullName varchar(255) NOT NULL ,
+  	id varchar(10) NOT NULL ,
+  	email varchar(255)  NOT NULL ,
+  	password varchar(255) NOT NULL ,
+  	semester int(2) NOT NULL ,
+  	currentDepartment varchar(255) NOT NULL,
+  	PRIMARY KEY (amka)
+);
+
+create table application(
+  	studentAmka varchar(11),
+  	hasBrotherSameCity bit NOT NULL,
+  	noOfUnderageBrothers int(2) NOT NULL,
+  	cityOfOrigin varchar(255) NOT NULL,
+  	familyIncome float(10,2) NOT NULL,
+  	choice1 varchar(255) NOT NULL,
+  	choice2 varchar(255),
+  	points int(10) NOT NULL,
+  	oikogeneiakh_katastash blob,
+  	ekkatharistiko blob,
+  	bebaiwsh_spoudwn blob,
+  	monimh_katoikia blob,
+  	PRIMARY KEY (studentAmka),
+  	FOREIGN KEY (studentAmka) references student(amka)
+);
+
+create table checked(
+	studentAmka varchar(11),
+  	dateOfCheck varchar(30) NOT NULL ,
+  	isApproved bit NOT NULL ,
+  	acceptedDepartment varchar(255),
+  	PRIMARY KEY(studentAmka)
+);

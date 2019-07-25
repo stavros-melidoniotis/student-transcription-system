@@ -1,0 +1,160 @@
+<html lang="html">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Εγγραφή στο σύστημα μετεγγραφών</title>
+    </head>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link href="/assets/masterCss.css" rel="stylesheet">
+
+    <body>
+        <div class="navbar">
+            <a href="/home_page">Αρχική Σελίδα</a>
+            <a href="/about">Σχετικά με το Πανεπιστήμιο</a>
+            <a href="/contact">Επικοινωνία</a>
+        </div>
+        <div class="container-fluid big-bg">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <form class="big-form-container" id='myForm'
+                        onsubmit="return confirm('Είστε βέβαιος για την ακρίβεια των στοιχείων σας;');">
+                        <h1>Εγγραφή στο σύστημα μετεγγραφών</h1>
+
+                        <div class="form-group">
+                            <label for="fullname"><b>Ονοματεπώνυμο: *</b></label>
+                            <input class="form-control" type="text" name="fullname" id="fullname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="currDep"><b>Τρέχων Τμήμα Φοίτησης: *</b></label>
+                            <input class="form-control" type="text" name="currDep" id="currDep" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="semester"><b>Τρέχων εξάμηνο φοίτησης: *</b></label>
+                            <input type="number" min='1' name="semester" id="semester" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="id"><b>Αριθμός Μητρώου: *</b></label>
+                            <input class="form-control" type="text" name="id" id="id" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="amka"><b>Αριθμός Μητρώου Κοινωνικής Ασφάλισης: *</b></label>
+                            <input type="number" name="amka" id="amka" required>
+                            <div id="amkaCheck"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><b>Ηλεκτρονική Διεύθυνση Ταχυδρομείου: *</b></label>
+                            <input class="form-control" type="email" name="email" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password"><b>Κωδικός Πρόσβασης: *</b></label>
+                            <input class="form-control" type="password" name="password" id="password" required>
+                        </div>
+
+                        <div id="message"></div>
+
+                        <div class="container-button">
+                            <input type="button" id="mainButton" class="mainButton btn-success" value="Εγγραφή">
+                            <button onclick="location.href='/'" type="button" class="secButton btn-warning">Επιστροφή</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+        <div class="bar">
+            <h5 align="center">&copy; Κατανεμημένα Συστήματα 2018-2019 team 9</h5>
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById("mainButton").addEventListener("click", function () {
+
+                //remove previous messages
+                document.getElementById("amkaCheck").innerHTML = "";
+                document.getElementById('message').innerHTML = "";
+
+                var xhr = new XMLHttpRequest();
+
+                var fullname = document.getElementById('fullname').value;
+                var amka = document.getElementById('amka').value;
+                var currDep = document.getElementById('currDep').value;
+                var semester = document.getElementById('semester').value;
+                var id = document.getElementById('id').value;
+                var email = document.getElementById('email').value;
+                var password = document.getElementById('password').value;
+
+                var flag = 0;
+
+                if (fullname.trim().length == 0 || currDep.trim().length == 0 || email.trim().length == 0 || password.trim().length == 0 || 
+                    id.trim().length == 0 || semester == null || amka.trim().length == 0)
+                    flag = 1;
+
+                if (isNaN(amka)) 
+                    flag = 2;
+                    
+                if (amka.length != 11)
+                    flag = 3;
+
+                switch(flag){
+                    case 1:
+                        document.getElementById('message').innerHTML = '<i>Πρέπει να συμπληρώσετε όλα τα πεδία με αστερίσκο (*) .</i>';
+                        break;
+                    case 2:
+                        document.getElementById("amkaCheck").innerHTML = "<i>Παρακαλώ δώστε σωστό ΑΜΚΑ.</i>";
+                        break;
+                    case 3:
+                        document.getElementById("amkaCheck").innerHTML = "<i>Το ΑΜΚΑ πρέπει να αποτελείται από 11 χαρακτήρες.</i>";
+                        break;
+                    case 0: 
+                        var url = 'http://snf-858012.vm.okeanos.grnet.gr:3393/register';
+
+                        var params = 'fullname=' + fullname + '&amka=' + amka + '&currDep=' + currDep + '&semester=' + semester + '&id=' + id + '&email=' + email + '&password=' + password;
+
+                        xhr.open('POST', url, true);
+                        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == 4 && xhr.status == 200) {
+                                var obj = JSON.parse(this.responseText);
+
+                                //clear previous message
+                                document.getElementById('message').innerHTML = "";
+
+                                if (obj.message == "REGISTRATION_COMPLETED") {
+                                    document.getElementById('message').innerHTML += "Η εγγραφή σας ολοκληρώθηκε με επιτυχία."
+                                    document.getElementById('myForm').reset();
+                                } else {
+                                    document.getElementById('message').innerHTML += "Υπήρξε κάποιο πρόβλημα. Παρακαλώ προσπαθήστε ξανά."
+                                }
+                            }
+                        };
+                        xhr.send(params);
+                        break;
+                }
+            });
+        </script>
+
+        <!-- Latest compiled and minified JQuery -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+                crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,352 @@
+<html lang="html">
+    <head>
+        <meta charset="UTF-8">
+        <title>Συμπλήρωση Αίτησης Μετεγγραφής</title>
+    </head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link href="/assets/masterCss.css" rel="stylesheet" type="text/css">
+
+    <body>
+        <div class="navbar">
+            <a href="/home_page">Αρχική Σελίδα</a>
+            <a href="/about">Σχετικά με το Πανεπιστήμιο</a>
+            <a href="/contact">Επικοινωνία</a>
+        </div>
+        <div class="container-fluid big-bg">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <form class="big-form-container" id='myForm' onsubmit="return confirm('Οριστική υποβολή αίτησης;');">
+                        <h1>Συμπλήρωση Αίτησης Μετεγγραφής</h1>
+
+                        <div class="form-group">
+                            <label for="amka"><b>ΑΜΚΑ: *</b></label>
+                            <input class="form-control" minlength="11" maxlength="11" type="text" name="amka" id="amka"
+                                required>
+                            <div id="amkaCheck"></div>
+                        </div>
+
+                        <h3><b>Οικογενειακά Κριτήρια</b></h3>
+                        <div class="form-group">
+                            <label for="hasBrotherSameCity"><b>Έχετε αδελφό που σπουδάζει στην πόλη επιλογής;</b></label>
+                            <input class="form-control" type="checkbox" name="hasBrotherSameCity" id="hasBrotherSameCity" 
+                                onclick="myFunction()">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="noOfUnderageBrothers"><b>Πόσα άλλα ανήλικα αδέλφια έχετε; *</b></label>
+                            <input min="0" type="number" name="noOfUnderageBrothers" id="noOfUnderageBrothers" required>
+                        </div>
+
+
+                        <h3><b>Οικονομικά Κριτήρια</b></h3>
+                        <div class="form-group">
+                            <label for="familyIncome"><b>Ποιό είναι το οικογενειακό σας εισόδημα; *</b></label>
+                            <input min="0" type="number" id="familyIncome" name="familyIncome" required>
+                        </div>
+
+                        <h3><b>Κριτήρια Εντοπιότητας</b></h3>
+
+                        <b>Μόνιμη Κατοικία: *</b>
+
+                        <label for="dropDownList"></label>
+                        <div class="citySearch">
+                            <select id="dropDownList" name="cityOfOrigin" required>
+                                <option value="Αγ. Νικόλαος Κρήτης">Αγ. Νικόλαος Κρήτης</option>
+                                <option value="Αγρίνιο">Αγρίνιο</option>
+                                <option value="Αθήνα">Αθήνα</option>
+                                <option value="Αίγιο">Αίγιο</option>
+                                <option value="Αλεξανδρούπολη">Αλεξανδρούπολη</option>
+                                <option value="Αμαλιάδα">Αμαλιάδα</option>
+                                <option value="Άμφισσα">Άμφισσα</option>
+                                <option value="Αργοστόλι">Αργοστόλι</option>
+                                <option value="Άρτα">Άρτα</option>
+                                <option value="Βόλος">Βόλος</option>
+                                <option value="Γρεβενά">Γρεβενά</option>
+                                <option value="Διδυμότειχο">Διδυμότειχο</option>
+                                <option value="Δράμα">Δράμα</option>
+                                <option value="Ερμούπολη">Ερμούπολη</option>
+                                <option value="Ζάκυνθος">Ζάκυνθος</option>
+                                <option value="Ηγουμενίτσα">Ηγουμενίτσα</option>
+                                <option value="Ηράκλειο">Ηράκλειο</option>
+                                <option value="Θεσσαλονίκη">Θεσσαλονίκη</option>
+                                <option value="Θήβα">Θήβα</option>
+                                <option value="Ιεράπετρα">Ιεράπετρα</option>
+                                <option value="Ιωάννινα">Ιωάννινα</option>
+                                <option value="Καβάλα">Καβάλα</option>
+                                <option value="Καλαμάτα">Καλαμάτα</option>
+                                <option value="Καρδίτσα">Καρδίτσα</option>
+                                <option value="Καρλόβασι">Καρλόβασι</option>
+                                <option value="Καστοριά">Καστοριά</option>
+                                <option value="Κατερίνη">Κατερίνη</option>
+                                <option value="Κέρκυρα">Κέρκυρα</option>
+                                <option value="Κιλκίς">Κιλκίς</option>
+                                <option value="Κοζάνη">Κοζάνη</option>
+                                <option value="Κομοτηνή">Κομοτηνή</option>
+                                <option value="Κόρινθος">Κόρινθος</option>
+                                <option value="Λαμία">Λαμία</option>
+                                <option value="Λάρισα">Λάρισα</option>
+                                <option value="Λευκάδα">Λευκάδα</option>
+                                <option value="Ληξούρι">Ληξούρι</option>
+                                <option value="Μεσολόγγι">Μεσολόγγι</option>
+                                <option value="Μυτιλήνη">Μυτιλήνη</option>
+                                <option value="Ναύπακτος">Ναύπακτος</option>
+                                <option value="Ναύπλιο">Ναύπλιο</option>
+                                <option value="Ξάνθη">Ξάνθη</option>
+                                <option value="Ορεστιάδα">Ορεστιάδα</option>
+                                <option value="Πάτρα">Πάτρα</option>
+                                <option value="Πειραιάς">Πειραιάς</option>
+                                <option value="Πρέβεζα">Πρέβεζα</option>
+                                <option value="Πύργος">Πύργος</option>
+                                <option value="Ρέθυμνο">Ρέθυμνο</option>
+                                <option value="Ρόδος">Ρόδος</option>
+                                <option value="Σάμος">Σάμος</option>
+                                <option value="Σέρρες">Σέρρες</option>
+                                <option value="Σητεία">Σητεία</option>
+                                <option value="Σπάρτη">Σπάρτη</option>
+                                <option value="Τρίκαλα">Τρίκαλα</option>
+                                <option value="Τρίπολη">Τρίπολη</option>
+                                <option value="Φλώρινα">Φλώρινα</option>
+                                <option value="Χαλκίδα">Χαλκίδα</option>
+                                <option value="Χανιά">Χανιά</option>
+                                <option value="Χίος">Χίος</option>
+                            </select>
+                        </div>
+
+                        <h3><b>Επιλογή Τμήματος</b></h3>
+                        <div class="depselect">
+                            <label for="choice1"><b>Πρώτη επιλογή: *</b></label>
+                            <select id="choice1" name="choice1" required>
+                                <option value=""></option>
+                                <option value="Τμήμα Πληροφορικής κ Τηλεματικής">Τμήμα Πληροφορικής κ Τηλεματικής</option>
+                                <option value="Τμήμα Οικιακής Οικονομίας">Τμήμα Οικιακής Οικονομίας</option>
+                                <option value="Τμήμα Γεωγραφίας">Τμήμα Γεωγραφίας</option>
+                                <option value="Τμήμα Διαιτολογίας">Τμήμα Διαιτολογίας</option>
+                            </select>
+
+                            <label for="choice2"><b>Δεύτερη επιλογή:</b></label>
+                            <select id="choice2" name="choice2">
+                                <option value=""></option>
+                                <option value="Τμήμα Πληροφορικής κ Τηλεματικής">Τμήμα Πληροφορικής κ Τηλεματικής</option>
+                                <option value="Τμήμα Οικιακής Οικονομίας">Τμήμα Οικιακής Οικονομίας</option>
+                                <option value="Τμήμα Γεωγραφίας">Τμήμα Γεωγραφίας</option>
+                                <option value="Τμήμα Διαιτολογίας">Τμήμα Διαιτολογίας</option>
+                            </select>
+                        </div>
+
+                        <div class="requiredDocuments">
+                            <h3><b>Δικαιολογητικά Έγγραφα</b></h3>
+
+                            <label for="oikogeneiakh_katastash">Πιστοποιητικό Οικογενειακής Κατάστασης: *</label>
+                                <input type="file" id="oikogeneiakh_katastash" name="oikogeneiakh_katastash"
+                                    required/>
+
+                                <label for="ekkatharistiko">Εκκαθαριστικό Σημείωμα: *</label>
+                                <input type="file" id="ekkatharistiko" name="ekkatharistiko" required>
+                                
+                                <div id="optionalDoc"></div>
+
+                                <label for="monimh_katoikia">Πιστοποιητικό Μόνιμης Κατοικίας: *</label>
+                                <input type="file" id="monimh_katoikia" name="monimh_katoikia" required>
+                        </div>
+
+                        <div id="message"></div>
+
+                        <div class="container-button">
+                            <input type="button" id="mainButton" class="mainButton btn-success" value="Ολοκλήρωση Αίτησης">
+                            <button onclick="location.href='/home_page'" type="button" class="secButton btn-warning">Επιστροφή
+                            </button>
+                            <button onclick="location.href='/logout'" type="button" class="logoutButton btn-danger">Αποσύνδεση
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12"></div>
+            </div>
+        </div>
+        <div class="bar">
+            <h5 align="center">&copy; Κατανεμημένα Συστήματα 2018-2019 team 9</h5>
+        </div>
+        <script type="text/javascript">
+            var docOn = false;
+
+            function sendRequest(amka, hasBrotherSameCity, noOfUnderageBrothers, familyIncome, cityOfOrigin, choice1, choice2, result1, result2, result3, result4) {
+                var xhr = new XMLHttpRequest();
+
+                var url = 'http://snf-858012.vm.okeanos.grnet.gr:3393/application/fill';
+
+                var params = 'amka=' + amka + '&hasBrotherSameCity=' + hasBrotherSameCity + '&noOfUnderageBrothers=' + noOfUnderageBrothers +
+                    '&familyIncome=' + familyIncome + '&cityOfOrigin=' + cityOfOrigin + '&choice1=' + choice1 + '&choice2=' + choice2 +
+                    '&input1=' + result1 + '&input2=' + result2 + '&input3=' + result3 + '&input4=' + result4;
+
+                console.log(params);
+
+                xhr.open('POST', url, true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var obj = JSON.parse(this.responseText);
+
+                        // document.getElementById('message').innerHTML = "";
+
+                        if (obj.message == 'APPLICATION_EXISTS') {
+                            document.getElementById('message').innerHTML = "</br></br> Έχετε ήδη υποβάλλει αίτηση."
+                        } else {
+                            document.getElementById('message').innerHTML = "</br></br> Η αίτησή σας υποβλήθηκε με επιτυχία."
+                        }
+                        document.getElementById('myForm').reset();
+                    }
+                };
+                xhr.send(params);
+            }
+
+            //myFunction checks if hasBrotherSameCity checkbox is checked
+            //if yes, then optional document (bebaiwsh_spoudwn) is displayed, otherwise remains hidden 
+            function myFunction(){
+                if (document.getElementById('hasBrotherSameCity').checked) {
+                    //create label
+                    var label = document.createElement('label');
+                    label.setAttribute("id", "bebaiwsh_spoudwnLabel");
+                    var labelText = document.createTextNode('Βεβαίωση Σπουδών Αδελφού: *');
+                    label.appendChild(labelText);
+
+                    //create input
+                    var input = document.createElement('input');
+                    input.setAttribute("type", "file");
+                    input.setAttribute("id", "bebaiwsh_spoudwn");
+                    docOn = true;
+                    
+                    //add label, input in div
+                    document.getElementById('optionalDoc').appendChild(label);
+                    document.getElementById('optionalDoc').appendChild(input);
+                } else {
+                    //when unchecked remove label and input from div
+                    var div = document.getElementById('optionalDoc');
+                    docOn = false;
+                    
+                    //remove child nodes until no one is left
+                    while (div.childNodes.length > 0) {
+                        div.removeChild(div.childNodes[0]);
+                    }
+                }        
+            }
+
+            document.getElementById('mainButton').addEventListener('click', function () {
+
+                //remove previous messages
+                document.getElementById("amkaCheck").innerHTML = "";
+                document.getElementById('message').innerHTML = "";
+
+                if (document.getElementById('hasBrotherSameCity').checked) {
+                    var hasBrotherSameCity = true;
+                } else {
+                    var hasBrotherSameCity = false;
+                }
+
+                var amka = document.getElementById('amka').value;
+                var noOfUnderageBrothers = document.getElementById('noOfUnderageBrothers').value;
+                var familyIncome = document.getElementById('familyIncome').value;
+                var cityOfOrigin = document.getElementById('dropDownList').value;
+                var choice1 = document.getElementById('choice1').value;
+                var choice2 = document.getElementById('choice2').value;
+                var input1 = document.getElementById('oikogeneiakh_katastash');
+                var input2 = document.getElementById('ekkatharistiko');
+                var input3 = document.getElementById('monimh_katoikia');
+                var input4 = document.getElementById('bebaiwsh_spoudwn');
+
+                var flag = 0;
+                var canRead = false;
+
+                if (docOn) {
+                    if (input4.value == ''){
+                        flag = 3;
+                    } else {
+                        canRead = true;
+                    }
+                }
+
+                if (isNaN(amka)) 
+                    flag = 1;
+                    
+                if (amka.length != 11) 
+                    flag = 2;
+                
+                if (amka.trim().length == 0 || cityOfOrigin.trim().length == 0 || familyIncome == null || 
+                    choice1.trim().length == 0 || noOfUnderageBrothers == null || input1.value =='' || input2.value =='' ||
+                    input3.value =='' ) 
+                    flag = 3;
+                
+                switch(flag){
+                    case 1:
+                        document.getElementById("amkaCheck").innerHTML = "<i>Παρακαλώ δώστε σωστό ΑΜΚΑ.</i>";
+                        break;
+                    case 2:
+                        document.getElementById("amkaCheck").innerHTML = "<i>Το ΑΜΚΑ πρέπει να αποτελείται από 11 χαρακτήρες.</i>";
+                        break;
+                    case 3:
+                        document.getElementById('message').innerHTML = "<i>Πρέπει να συμπληρώσετε όλα τα πεδία με αστερίσκο (*) .</i>";
+                        break;
+                    case 0:
+                        //clear previous messages
+                        document.getElementById("amkaCheck").innerHTML = "";
+                        document.getElementById('message').innerHTML = "";
+
+                        //create readers for each input
+                        var reader1 = new FileReader();
+                        var reader2 = new FileReader();
+                        var reader3 = new FileReader();
+
+                        //get file from each input
+                        var file1 = input1.files[0];
+                        var file2 = input2.files[0];
+                        var file3 = input3.files[0];
+
+                        //read files through readers
+                        reader1.readAsDataURL(file1); 
+                        reader2.readAsDataURL(file2); 
+                        reader3.readAsDataURL(file3); 
+                             
+                        //if optional doc is provided
+                        if (canRead) {
+                            var reader4 = new FileReader();
+                            var file4 = input4.files[0];
+                            reader4.readAsDataURL(file4);
+                        }
+
+                        reader1.onload = function(e) {
+                            reader2.onload = function(e) {
+                                reader3.onload = function(e) {
+                                    if (canRead) {
+                                        reader4.onload = function(e) {
+                                            sendRequest(amka, hasBrotherSameCity, noOfUnderageBrothers, familyIncome, cityOfOrigin, choice1, choice2, reader1.result, reader2.result, reader3.result, reader4.result);
+                                        }
+                                    } else {
+                                        sendRequest(amka, hasBrotherSameCity, noOfUnderageBrothers, familyIncome, cityOfOrigin, choice1, choice2, reader1.result, reader2.result, reader3.result, '');
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                }
+            });
+        </script>
+
+        <!-- Latest compiled and minified JQuery -->
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+                integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+                crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+#jdbc.url = jdbc:mysql://sql7.freesqldatabase.com:3306/sql7269950?useSSL=false
+#jdbc.user = sql7269950
+#jdbc.password = ffU3f4mVN6
+
+jdbc.url = jdbc:mysql://klonis.ddns.net:3392/katanemimena?useUnicode=yes;characterEncoding=UTF-8;
+jdbc.user = root
+jdbc.password = Db_Admin2019
+

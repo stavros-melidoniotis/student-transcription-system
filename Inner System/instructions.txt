@@ -1,0 +1,36 @@
+			PATHS											USE
+
+1)IntranetSystem/student/register 			      -> Form to register new Student 
+  redirects to .../create
+ 
+2)IntranetSystem/student/application/fill         -> Form to fill an Application
+  redirects to .../application/create
+  
+3)IntranetSystem/transAdmin/application/select    -> Dropdown to select Application
+  redirects to .../application/check
+  
+4)IntranetSystem/transAdmin/application/check	  -> Display Application's info and check form
+  redirects to .../application/checked_application
+  
+5)IntranetSystem/secSuper/update_dep_pos		  -> Form to update dep's positions
+  redirects to .../new_positions
+  
+6)IntranetSystem/secSuper/add					  -> Form to add new department
+  redirects to .../new_department
+  
+7)IntranetSystem/secSuper/delete				  -> Dropdown to select department to delete
+  redirects to .../delete_department
+
+
+
+			Controllers
+		
+HomeController			-> Controls login, logout and home-page requests
+
+StudentController		-> Controls everything that has to do with student actions
+
+TransAdminController	-> Controls everything that has to do with transAdmin actions
+
+secSupervisorController -> Controls everything that has to do with secSuper actions
+
+ApiController			-> Controls all API calls from NodeJS server
